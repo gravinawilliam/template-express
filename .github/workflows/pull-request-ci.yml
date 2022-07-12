@@ -33,3 +33,6 @@ jobs:
 
       - name: 📑 Check lint
         run: yarn check:lint
+
+      - name: 🔤 Check spelling
+        run: npm run check:spelling
