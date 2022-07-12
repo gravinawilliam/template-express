@@ -12,19 +12,15 @@ jobs:
   validate:
     name: ✅ Validate project
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.16.0]
 
     steps:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v3
 
-      - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
+      - name: 🟢 Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
+          node-version: 16.16.0
 
       - name: 📥 Install dependencies
         run: yarn
