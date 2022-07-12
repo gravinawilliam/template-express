@@ -5,13 +5,19 @@
   "repository": "git@github.com:gravinawilliam/template-express.git",
   "author": "William Gravina <dev.gravinawilliam@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.16.0"
+  },
   "scripts": {
     "check:format": "prettier --check .",
     "check:lint": "eslint . --ext .js,.ts --color",
     "check:spelling": "cspell \"{README.md,TODO.md,.github/*.md,src/**/*.ts}\"",
+    "check:staged": "lint-staged",
+    "check:types": "tsc --pretty --noEmit",
     "commit": "cz",
     "fix:format": "prettier --check --write --ignore-unknown .",
     "fix:lint": "npm run check:lint -- --fix",
+    "prepare": "husky install",
     "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --clear --ignore-watch node_modules --respawn src/main/index.ts",
     "update:deps": "ncu"
   },
@@ -52,6 +58,8 @@
     "eslint-plugin-unicorn": "^43.0.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "get-tsconfig": "^4.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "npm-check-updates": "^15.2.6",
     "prettier": "^2.7.1",
     "ts-node-dev": "^2.0.0",
