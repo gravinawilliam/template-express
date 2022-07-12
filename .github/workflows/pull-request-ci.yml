@@ -1,0 +1,39 @@
+name: PULL REQUEST CI
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  # pull_request:
+  #   types: [opened, synchronize, reopened, edited]
+
+jobs:
+  validate:
+    name: ✅ Validate project
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.16.0]
+
+    steps:
+      - name: ⬇️ Checkout project
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 🖍️ Check types
+        run: npm run check:types
+
+      - name: 💅 Check format
+        run: npm run check:format
+
+      - name: 📑 Check lint
+        run: npm run check:lint
