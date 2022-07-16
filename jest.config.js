@@ -44,6 +44,7 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
   collectCoverage: false,
+  testResultsProcessor: 'jest-sonar-reporter',
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   coveragePathIgnorePatterns: [
